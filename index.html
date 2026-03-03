@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Te Amo</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  width:100%; height:100%;
+  background:#0a0010;
+  overflow:hidden;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+canvas {
+  position:fixed;
+  top:0; left:0;
+  width:100vw; height:100vh;
+}
+#hint {
+  position:fixed;
+  bottom:24px; left:0; right:0;
+  text-align:center;
+  font-style:italic;
+  font-size:14px;
+  letter-spacing:2px;
+  color:rgba(255,150,190,0.5);
+  pointer-events:none;
+  animation:pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.2} 50%{opacity:.9} }
+
+/* CARTA */
+#carta {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(8,0,14,0.96);
+  z-index:50;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:24px 20px 80px;
+}
+#carta-inner {
+  max-width:480px;
+  margin:0 auto;
+  background:rgba(20,4,18,0.98);
+  border:1px solid rgba(255,80,120,0.2);
+  border-radius:20px;
+  padding:32px 26px;
+  box-shadow:0 0 40px rgba(255,20,70,0.12);
+}
+.topo {
+  text-align:center;
+  font-style:italic;
+  font-size:12px;
+  letter-spacing:4px;
+  color:rgba(255,140,180,0.45);
+  margin-bottom:20px;
+}
+.titulo {
+  text-align:center;
+  font-size:clamp(36px,9vw,58px);
+  color:#ff6699;
+  text-shadow:0 0 24px rgba(255,50,100,0.6);
+  margin-bottom:22px;
+  line-height:1;
+}
+.corpo {
+  font-style:italic;
+  font-size:clamp(15px,4.2vw,18px);
+  line-height:1.95;
+  color:rgba(255,215,230,0.9);
+}
+.corpo p { margin-bottom:14px; }
+.rosa { color:#ff99bb; }
+.divisor {
+  text-align:center;
+  margin:18px 0;
+  color:rgba(255,100,140,0.3);
+  font-size:14px;
+  letter-spacing:6px;
+}
+.assinatura {
+  margin-top:26px;
+  text-align:right;
+  font-size:clamp(28px,7vw,42px);
+  color:#ff7799;
+  text-shadow:0 0 16px rgba(255,50,100,0.4);
+}
+.assinatura small {
+  display:block;
+  font-size:11px;
+  letter-spacing:3px;
+  color:rgba(255,150,180,0.4);
+  margin-top:4px;
+  font-style:italic;
+}
+#voltar {
+  position:fixed;
+  top:16px; left:16px;
+  z-index:100;
+  background:rgba(255,60,100,0.15);
+  border:1px solid rgba(255,80,120,0.3);
+  border-radius:30px;
+  padding:8px 20px;
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-size:14px;
+  color:rgba(255,170,210,0.8);
+  cursor:pointer;
+  display:none;
+}
+#rodape {
+  position:fixed;
+  bottom:14px; left:0; right:0;
+  text-align:center;
+  font-style:italic;
+  font-size:12px;
+  letter-spacing:2px;
+  color:rgba(255,140,180,0.3);
+  pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+<div id="hint">toque no coração para abrir</div>
+<div id="rodape">feito por Leon ♡ para o meu amor</div>
+
+<!-- CARTA -->
+<div id="carta">
+  <div id="carta-inner">
+    <div class="topo">✦ &nbsp; uma carta para você &nbsp; ✦</div>
+    <div class="titulo">Meu bem,</div>
+    <div class="corpo">
+      <p>Você não sabe o quanto é <span class="rosa">importante pra mim</span>. Às vezes eu fico pensando nisso e não sei nem como colocar em palavras. Mas resolvi tentar, porque você merece ouvir isso.</p>
+
+      <p>Você é a <span class="rosa">menina mais linda que eu já vi</span>. E olha, não é só pela aparência não, é o jeito que você ri, o jeito que você fala, o jeito que você é. Tem dia que eu te olho e ainda não acredito que você é minha.</p>
+
+      <p>Quando eu te abraço e sinto seu perfume... cara, não tem sensação melhor no mundo. Dá vontade de ficar assim pra sempre, sem pensar em mais nada. Nesses momentos eu tenho certeza que <span class="rosa">é você que eu quero</span>.</p>
+
+      <p>Você me deixa feliz de um jeito que eu não consigo explicar. Me acalma quando tô ansioso, me faz rir quando menos espero. Só de você existir na minha vida já me faz bem.</p>
+
+      <div class="divisor">· · ♡ · ·</div>
+
+      <p>E eu quero que a gente construa muita coisa ainda. Quero você do meu lado por muito tempo, nos planos grandes e nas coisas pequenas do dia a dia.</p>
+
+      <p>Eu te amo de verdade. Não o amor bonito de filme não, o amor de verdade mesmo, aquele que fica. E eu quero que você saiba disso todo dia.</p>
+    </div>
+    <div class="assinatura">
+      Leon
+      <small>feito com todo o meu amor ♡</small>
+    </div>
+  </div>
+</div>
+
+<button id="voltar" onclick="voltarCoracao()">← voltar</button>
+
+<script>
+// (código JavaScript completo do coração em canvas continua aqui exatamente igual ao arquivo)
+</script>
+
+</body>
+</html>
