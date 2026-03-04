@@ -22,12 +22,21 @@ canvas{
 
 #hint{
   position:fixed;
-  bottom:25px;
+  bottom:24px;
   width:100%;
   text-align:center;
   color:rgba(255,150,190,.6);
   font-style:italic;
   letter-spacing:2px;
+}
+
+#rodape{
+  position:fixed;
+  bottom:8px;
+  width:100%;
+  text-align:center;
+  font-size:12px;
+  color:rgba(255,140,180,.3);
 }
 
 #carta{
@@ -65,26 +74,34 @@ canvas{
 <body>
 
 <canvas id="c"></canvas>
-<div id="hint">toque no coração</div>
+<div id="hint">toque no coração para abrir</div>
+<div id="rodape">feito por Leon ♡ para o meu amor</div>
 
 <div id="carta">
   <div id="carta-box">
     <h1 style="color:#ff6699;text-align:center;">Meu bem,</h1>
-    <p>
-      Você é a pessoa mais importante da minha vida.
-      Cada momento ao seu lado vira algo especial.
-    </p>
-    <p>
-      Eu te amo de verdade. E quero você comigo
-      hoje, amanhã e sempre.
-    </p>
+
+    <p>Você não sabe o quanto é <span style="color:#ff99bb;">importante pra mim</span>. Às vezes eu fico pensando nisso e não sei nem como colocar em palavras. Mas resolvi tentar, porque você merece ouvir isso.</p>
+
+    <p>Você é a <span style="color:#ff99bb;">menina mais linda que eu já vi</span>. E olha, não é só pela aparência não, é o jeito que você ri, o jeito que você fala, o jeito que você é. Tem dia que eu te olho e ainda não acredito que você é minha.</p>
+
+    <p>Quando eu te abraço e sinto seu perfume... cara, não tem sensação melhor no mundo. Dá vontade de ficar assim pra sempre, sem pensar em mais nada. Nesses momentos eu tenho certeza que <span style="color:#ff99bb;">é você que eu quero</span>.</p>
+
+    <p>Você me deixa feliz de um jeito que eu não consigo explicar. Me acalma quando tô ansioso, me faz rir quando menos espero. Só de você existir na minha vida já me faz bem.</p>
+
+    <hr style="border:0;border-top:1px solid rgba(255,80,120,.2);margin:20px 0;">
+
+    <p>E eu quero que a gente construa muita coisa ainda. Quero você do meu lado por muito tempo, nos planos grandes e nas coisas pequenas do dia a dia.</p>
+
+    <p>Eu te amo de verdade. Não o amor bonito de filme não, o amor de verdade mesmo, aquele que fica. E eu quero que você saiba disso todo dia.</p>
+
     <p style="text-align:right;margin-top:30px;font-size:22px;color:#ff7799;">
       Leon ♡
     </p>
   </div>
 </div>
 
-<button id="voltar">voltar</button>
+<button id="voltar">← voltar</button>
 
 <script>
 const canvas = document.getElementById("c");
@@ -99,6 +116,7 @@ window.addEventListener("resize", resize);
 
 let rot = 0;
 let auto = true;
+let T = 0;
 
 canvas.addEventListener("click", abrirCarta);
 
@@ -118,6 +136,7 @@ document.getElementById("voltar").onclick = function(){
 
 function draw(){
   requestAnimationFrame(draw);
+  T += 0.02;
 
   ctx.fillStyle="#0a0010";
   ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -126,16 +145,16 @@ function draw(){
 
   const cx = canvas.width/2;
   const cy = canvas.height/2;
-
   const cosY = Math.cos(rot);
+  const beat = 1 + 0.04*Math.sin(T*1.5);
 
   for(let i=0;i<200;i++){
     const t = i/200*Math.PI*2;
     const x = 16*Math.pow(Math.sin(t),3);
     const y = -(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
 
-    const sx = cx + x*cosY*15;
-    const sy = cy + y*15;
+    const sx = cx + x*cosY*15*beat;
+    const sy = cy + y*15*beat;
 
     ctx.font="italic 14px Georgia";
     ctx.textAlign="center";
